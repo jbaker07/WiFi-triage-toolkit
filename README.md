@@ -17,6 +17,3 @@ chmod +x wifi_triage.sh
 - Linux: `sudo tcpdump -i wlan0 -vvv wlan type mgt or ether proto 0x888e`
 - Useful Wireshark display filters:
 - `eapol || (wlan.fc.type_subtype in {0x00,0x01,0x02,0x03}) || (dhcp || dns)`
-
-## Resume bullet (suggested)
-Built a cross‑platform Wi‑Fi diagnostic (RSSI/SNR, channel/band, PHY rate, DNS latency, packet loss) with an HTML report and remediation tips; standardized first‑touch Wi‑Fi triage for mock users.
