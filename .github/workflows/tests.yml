@@ -1,0 +1,46 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax and ShellCheck
+        run: |
+          bash -n wifi_triage.sh
+          if [ "$RUNNER_OS" = Linux ]; then
+            command -v shellcheck >/dev/null || sudo apt-get install -y shellcheck
+            shellcheck --severity=error wifi_triage.sh
+          fi
+
+      # The runners have no Wi-Fi hardware, so this checks the report is written,
+      # has its sections, and that --redact leaves no MAC address or host name.
+      - name: Redacted report
+        run: |
+          REPORT="$RUNNER_TEMP/report.html"
+          ./wifi_triage.sh --redact --out "$REPORT"
+          test -s "$REPORT"
+          for SECTION in Findings System "Network snapshot" "Remediation tips"; do
+            grep -q "<h2>$SECTION" "$REPORT" || { echo "missing section: $SECTION"; exit 1; }
+          done
+          if grep -i -q -E '([0-9a-f]{2}:){5}[0-9a-f]{2}' "$REPORT"; then
+            echo "a MAC address survived --redact"; exit 1
+          fi
+          if grep -i -q -F "$(hostname -s)" "$REPORT"; then
+            echo "the host name survived --redact"; exit 1
+          fi
+          echo "report: $(grep -c '<h2>' "$REPORT") sections"
