@@ -1,0 +1,107 @@
+<!doctype html><meta charset="utf-8"><title>Wi-Fi Report 20261123-224324</title><style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:920px;margin:40px auto;padding:0 16px;line-height:1.4}pre{background:#111;color:#eee;padding:12px;border-radius:10px;overflow:auto}h2{margin-top:28px}ul.findings li{margin:4px 0}</style>
+<h1>Wi-Fi Report 20261123-224324</h1>
+<p>This report summarizes current Wi-Fi state, nearby networks, latency, DNS, and basic HTTP timing.</p>
+<p><b>Redacted:</b> SSIDs, BSSIDs, MAC and IP addresses, host names and search domains are replaced with placeholders.</p>
+<h2>Findings</h2><ul class="findings">
+<li>No Wi-Fi interface on this machine, so the report covers wired networking only.</li>
+<li>Ping to dns: 0% packet loss, average 0.059 ms.</li>
+<li>Ping to gateway: 0% packet loss, average 0.045 ms.</li>
+<li>Ping to internet: 0% packet loss, average 33.371 ms.</li>
+</ul>
+<h2>System</h2><pre>
+Report time: Mon Nov 23 22:43:24 UTC 2026
+Host name: &lt;redacted-name&gt;
+Kernel: Linux 7.0.14-linuxkit aarch64
+VERSION_ID=3.20.10
+PRETTY_NAME="Alpine Linux v3.20"
+Running as uid 0
+</pre>
+<h2>Wi-Fi</h2><pre>
+No Wi-Fi interface found. Checked iw dev, nmcli, /sys/class/net/*/wireless and iwconfig.
+</pre>
+<h2>Network snapshot</h2><pre>
+== Addresses (ip address)
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback &lt;mac&gt; brd &lt;mac&gt;
+    inet &lt;ipv4&gt;/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 &lt;ipv6&gt;/128 scope host 
+       valid_lft forever preferred_lft forever
+2: tunl0@NONE: &lt;NOARP&gt; mtu 1480 qdisc noop state DOWN qlen 1000
+    link/ipip &lt;ipv4&gt; brd &lt;ipv4&gt;
+3: gre0@NONE: &lt;NOARP&gt; mtu 1476 qdisc noop state DOWN qlen 1000
+    link/gre &lt;ipv4&gt; brd &lt;ipv4&gt;
+4: gretap0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1462 qdisc noop state DOWN qlen 1000
+    link/ether &lt;mac&gt; brd &lt;mac&gt;
+5: erspan0@NONE: &lt;BROADCAST,MULTICAST&gt; mtu 1450 qdisc noop state DOWN qlen 1000
+    link/ether &lt;mac&gt; brd &lt;mac&gt;
+6: ip_vti0@NONE: &lt;NOARP&gt; mtu 1480 qdisc noop state DOWN qlen 1000
+    link/ipip &lt;ipv4&gt; brd &lt;ipv4&gt;
+7: ip6_vti0@NONE: &lt;NOARP&gt; mtu 1428 qdisc noop state DOWN qlen 1000
+    link/tunnel6 &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt; brd &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt;
+8: sit0@NONE: &lt;NOARP&gt; mtu 1480 qdisc noop state DOWN qlen 1000
+    link/sit &lt;ipv4&gt; brd &lt;ipv4&gt;
+9: ip6tnl0@NONE: &lt;NOARP&gt; mtu 1452 qdisc noop state DOWN qlen 1000
+    link/tunnel6 &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt; brd &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt;
+10: ip6gre0@NONE: &lt;NOARP&gt; mtu 1448 qdisc noop state DOWN qlen 1000
+    link/[823] &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt; brd &lt;mac&gt;:&lt;mac&gt;:&lt;ipv6&gt;
+11: eth0@if796: &lt;BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN&gt; mtu 65535 qdisc noqueue state UP 
+    link/ether &lt;mac&gt; brd &lt;mac&gt;
+    inet &lt;ipv4&gt;/16 brd &lt;ipv4&gt; scope global eth0
+       valid_lft forever preferred_lft forever
+
+== Routes (ip route)
+default via &lt;ipv4&gt; dev eth0 
+&lt;ipv4&gt;/16 dev eth0 scope link  src &lt;ipv4&gt; 
+
+== DNS (/etc/resolv.conf)
+nameserver &lt;ipv4&gt;
+</pre>
+<h2>Ping dns</h2><pre>
+Target: dns (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: seq=0 ttl=63 time=0.024 ms
+64 bytes from &lt;ipv4&gt;: seq=1 ttl=63 time=0.062 ms
+64 bytes from &lt;ipv4&gt;: seq=2 ttl=63 time=0.066 ms
+64 bytes from &lt;ipv4&gt;: seq=3 ttl=63 time=0.076 ms
+64 bytes from &lt;ipv4&gt;: seq=4 ttl=63 time=0.071 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 0.024/0.059/0.076 ms
+</pre>
+<h2>Ping gateway</h2><pre>
+Target: gateway (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: seq=0 ttl=64 time=0.066 ms
+64 bytes from &lt;ipv4&gt;: seq=1 ttl=64 time=0.039 ms
+64 bytes from &lt;ipv4&gt;: seq=2 ttl=64 time=0.035 ms
+64 bytes from &lt;ipv4&gt;: seq=3 ttl=64 time=0.044 ms
+64 bytes from &lt;ipv4&gt;: seq=4 ttl=64 time=0.045 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 0.035/0.045/0.066 ms
+</pre>
+<h2>Ping internet</h2><pre>
+Target: internet (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: seq=0 ttl=63 time=18.179 ms
+64 bytes from &lt;ipv4&gt;: seq=1 ttl=63 time=61.610 ms
+64 bytes from &lt;ipv4&gt;: seq=2 ttl=63 time=61.611 ms
+64 bytes from &lt;ipv4&gt;: seq=3 ttl=63 time=11.395 ms
+64 bytes from &lt;ipv4&gt;: seq=4 ttl=63 time=14.063 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 11.395/33.371/61.611 ms
+</pre>
+<h2>HTTP timing (curl to https://example.com, seconds)</h2><pre>
+curl is not installed, so there is no HTTP timing.
+</pre>
+<h2>Remediation tips</h2><ul>
+<li>RSSI worse than -65 dBm or SNR below 25 dB: move closer to the access point, reduce interference, prefer 5 GHz.</li>
+<li>High packet loss or latency to the gateway: the problem is the Wi-Fi hop. Check channel congestion, try the other band, look for interference.</li>
+<li>Clean gateway but loss or latency to DNS or the internet: the problem is past the access point. Check the uplink and any captive portal.</li>
+<li>Slow DNS or TLS in the HTTP timing usually points at the network path or MTU. Compare wired against Wi-Fi.</li>
+</ul>

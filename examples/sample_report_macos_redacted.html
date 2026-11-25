@@ -1,0 +1,319 @@
+<!doctype html><meta charset="utf-8"><title>Wi-Fi Report 20261123-164106</title><style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;max-width:920px;margin:40px auto;padding:0 16px;line-height:1.4}pre{background:#111;color:#eee;padding:12px;border-radius:10px;overflow:auto}h2{margin-top:28px}ul.findings li{margin:4px 0}</style>
+<h1>Wi-Fi Report 20261123-164106</h1>
+<p>This report summarizes current Wi-Fi state, nearby networks, latency, DNS, and basic HTTP timing.</p>
+<p><b>Redacted:</b> SSIDs, BSSIDs, MAC and IP addresses, host names and search domains are replaced with placeholders.</p>
+<h2>Findings</h2><ul class="findings">
+<li>Signal -60 dBm is strong.</li>
+<li>SNR is 33 dB, which is healthy.</li>
+<li>Ping to dns: 0.0% packet loss, average 10.954 ms.</li>
+<li>Ping to gateway: 0.0% packet loss, average 32.247 ms.</li>
+<li>Ping to internet: 0.0% packet loss, average 10.636 ms.</li>
+<li>Networks in the nearby list on the current channel (56): 1.</li>
+</ul>
+<h2>System</h2><pre>
+Report time: Mon Nov 23 16:41:06 CST 2026
+Host name: &lt;redacted-name&gt;
+Kernel: Darwin 27.2.0 arm64
+ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B123
+      Model Name: Mac Studio
+      Model Identifier: Mac14,14
+      Chip: Apple M2 Ultra
+      Memory: 64 GB
+Running as uid 501
+</pre>
+<h2>Current Wi-Fi (system_profiler SPAirPortDataType)</h2><pre>
+Interface: en1
+Status: connected
+SSID: &lt;redacted&gt;
+PHY mode: 802.11ax
+Channel: 56 (5GHz, 80MHz)
+Signal / noise: -60 dBm / -93 dBm
+SNR: 33 dB
+Transmit rate: 648 Mbps
+MCS index: 6
+Security: wpa2_personal
+Country code: US
+Card: wifi (0x14E4, 0x4388)
+Firmware: wl0: Aug 26 2026 05:27:53 version 23.10.1042.0.41.51.242 FWID 01-875a2d8a
+IO80211_driverkit-1587.10 "IO80211_driverkit-1587.10" Oct  3 2026 14:53:06
+
+macOS hides the SSID and BSSID from programs that do not have Location Services
+permission. Grant it to the terminal app to see them, or use sudo wdutil info.
+</pre>
+<h2>Nearby networks (system_profiler, last system scan)</h2><pre>
+NETWORK                          CHANNEL                PHY            SECURITY
+&lt;redacted&gt;                       8 (2GHz, 20MHz)        802.11b/g/n/ax wpa3_transition
+&lt;redacted&gt;                       9 (2GHz, 20MHz)        802.11b/g/n    wpa2_personal
+&lt;redacted&gt;                       161 (5GHz, 80MHz)      802.11a/n/ac/ax wpa3_transition
+&lt;redacted&gt;                       5 (2GHz, 20MHz)        802.11b/g/n/ax wpa3_transition
+&lt;redacted&gt;                       10 (2GHz, 20MHz)       802.11b/g/n    wpa2_personal
+&lt;redacted&gt;                       56 (5GHz, 80MHz)       802.11a/n/ac/ax wpa2_personal
+6 nearby networks
+</pre>
+<h2>wdutil</h2><pre>
+wdutil info needs sudo. Run: sudo wdutil info
+</pre>
+<h2>Network snapshot</h2><pre>
+== Hardware ports (networksetup -listallhardwareports)
+
+Hardware Port: Ethernet
+Device: en0
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en8)
+Device: en8
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: AX88179A
+Device: en15
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en9)
+Device: en9
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en10)
+Device: en10
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en11)
+Device: en11
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en12)
+Device: en12
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Ethernet Adapter (en13)
+Device: en13
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt Bridge
+Device: bridge0
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Wi-Fi
+Device: en1
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 1
+Device: en2
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 2
+Device: en3
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 3
+Device: en4
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 4
+Device: en5
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 5
+Device: en6
+Ethernet Address: &lt;mac&gt;
+
+Hardware Port: Thunderbolt 6
+Device: en7
+Ethernet Address: &lt;mac&gt;
+
+VLAN Configurations
+===================
+
+== Default route (route -n get default)
+   route to: default
+destination: default
+       mask: default
+    gateway: &lt;ipv4&gt;
+  interface: en1
+      flags: &lt;UP,GATEWAY,DONE,STATIC,PRCLONING,GLOBAL&gt;
+ recvpipe  sendpipe  ssthresh  rtt,msec    rttvar  hopcount      mtu     expire
+       0         0         0         0         0         0      1500         0 
+
+== Wi-Fi service settings (networksetup -getinfo Wi-Fi)
+DHCP Configuration
+IP address: &lt;ipv4&gt;
+Subnet mask: &lt;ipv4&gt;
+Router: &lt;ipv4&gt;
+Client ID: 
+IPv6: Automatic
+IPv6 IP address: none
+IPv6 Router: none
+Wi-Fi ID: &lt;mac&gt;
+
+== Interface summary (ipconfig getsummary en1)
+&lt;dictionary&gt; {
+  BSSID : &lt;redacted&gt;
+  ConnectionID : 1
+  IPv4 : &lt;array&gt; {
+    0 : &lt;dictionary&gt; {
+      Addresses : &lt;array&gt; {
+        0 : &lt;ipv4&gt;
+      }
+      ChildServiceID : LINKLOCAL-en1
+      ConfigMethod : DHCP
+      DHCP : &lt;dictionary&gt; {
+        LeaseExpirationTime : 11/24/2026 10:43:30
+        LeaseStartTime : 11/23/2026 10:43:30
+        State : BOUND
+      }
+      IsPublished : TRUE
+      Router : &lt;ipv4&gt;
+      RouterARPVerified : TRUE
+      ServiceID : &lt;uuid&gt;
+      SubnetMasks : &lt;array&gt; {
+        0 : &lt;ipv4&gt;
+      }
+    }
+    1 : &lt;dictionary&gt; {
+      ConfigMethod : LinkLocal
+      IsPublished : TRUE
+      ParentServiceID : &lt;uuid&gt;
+      ServiceID : LINKLOCAL-en1
+    }
+  }
+  IPv6 : &lt;array&gt; {
+    0 : &lt;dictionary&gt; {
+      ConfigMethod : Automatic
+      DHCPv6 : &lt;dictionary&gt; {
+        LeaseExpirationTime : 11/23/2026 17:14:13
+        LeaseStartTime : 11/23/2026 16:14:13
+        Mode : Stateful
+        State : Bound
+        StatefulAddress : &lt;ipv6&gt;
+      }
+      IsPublished : TRUE
+      RTADV : &lt;dictionary&gt; {
+        RouterAdvertisement : from &lt;ipv6&gt;, length 136, hop limit 64, lifetime 1800s, reachable 0ms, retransmit 0ms, flags 0xc0=[ managed other ], pref=medium
+	prefix info option (3), length 32 (4):  &lt;ipv6&gt;/64, flags [ onlink auto ], valid time 3600s, pref. time 3600s
+	route info option (24), length 24 (3):  &lt;ipv6&gt;/60, pref=high, lifetime 3600s
+	rdnss option (25), length 24 (3):  lifetime 600s, addr: &lt;ipv6&gt;
+	dnssl option (31), length 24 (3):  lifetime 600s, domain(s): &lt;redacted-name&gt;
+	mtu option (5), length 8 (1): &lt;mac&gt;
+	source link-address option (1), length 8 (1): &lt;mac&gt;
+
+        State : Acquired
+      }
+      ServiceID : &lt;uuid&gt;
+    }
+  }
+  InterfaceType : WiFi
+  LinkStatusActive : TRUE
+  NetworkID : &lt;redacted&gt;
+  SSID : &lt;redacted&gt;
+  Security : WPA2_PSK
+}
+
+== Network state (scutil --nwi)
+Network information
+
+IPv4 network interface information
+     en1 : flags      : 0x7 (IPv4,IPv6,DNS)
+           address    : &lt;ipv4&gt;
+           reach      : 0x00000002 (Reachable)
+
+   REACH : flags 0x00000002 (Reachable)
+
+IPv6 network interface information
+     en1 : flags      : 0x7 (IPv4,IPv6,DNS)
+           address    : &lt;ipv6&gt;
+           reach      : 0x00000002 (Reachable)
+
+   REACH : flags 0x00000002 (Reachable)
+
+Network interfaces: en1
+
+== DNS resolvers (scutil --dns)
+resolver #1
+  search domain[0] : &lt;redacted-name&gt;
+  nameserver[0] : &lt;ipv4&gt;
+  nameserver[1] : &lt;ipv4&gt;
+  reach    : 0x00000002 (Reachable)
+resolver #2
+  domain   : local
+  reach    : 0x00000000 (Not Reachable)
+resolver #3
+  domain   : 254.169.in-addr.arpa
+  reach    : 0x00000000 (Not Reachable)
+resolver #4
+  domain   : 8.e.f.ip6.arpa
+  reach    : 0x00000000 (Not Reachable)
+resolver #5
+  domain   : 9.e.f.ip6.arpa
+  reach    : 0x00000000 (Not Reachable)
+resolver #6
+  domain   : a.e.f.ip6.arpa
+  reach    : 0x00000000 (Not Reachable)
+resolver #7
+  domain   : b.e.f.ip6.arpa
+  reach    : 0x00000000 (Not Reachable)
+resolver #1
+  search domain[0] : &lt;redacted-name&gt;
+  nameserver[0] : &lt;ipv4&gt;
+  nameserver[1] : &lt;ipv4&gt;
+  if_index : 25 (en1)
+  reach    : 0x00000002 (Reachable)
+</pre>
+<h2>Ping dns</h2><pre>
+Target: dns (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: icmp_seq=0 ttl=56 time=10.065 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=1 ttl=56 time=9.118 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=2 ttl=56 time=11.857 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=3 ttl=56 time=11.186 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=4 ttl=56 time=12.546 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 9.118/10.954/12.546/1.230 ms
+</pre>
+<h2>Ping gateway</h2><pre>
+Target: gateway (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: icmp_seq=0 ttl=64 time=5.728 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=1 ttl=64 time=6.885 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=2 ttl=64 time=49.801 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=3 ttl=64 time=93.773 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=4 ttl=64 time=5.049 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 5.049/32.247/93.773/35.156 ms
+</pre>
+<h2>Ping internet</h2><pre>
+Target: internet (&lt;ipv4&gt;)
+PING &lt;ipv4&gt; (&lt;ipv4&gt;): 56 data bytes
+64 bytes from &lt;ipv4&gt;: icmp_seq=0 ttl=56 time=8.837 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=1 ttl=56 time=11.644 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=2 ttl=56 time=10.534 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=3 ttl=56 time=10.985 ms
+64 bytes from &lt;ipv4&gt;: icmp_seq=4 ttl=56 time=11.180 ms
+
+--- &lt;ipv4&gt; ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 8.837/10.636/11.644/0.968 ms
+</pre>
+<h2>HTTP timing (curl to https://example.com, seconds)</h2><pre>
+
+lookup:0.002911 connect:0.013770 tls:0.034516 ttfb:0.055011 total:0.055067
+</pre>
+<h2>Channel crowding (networks per channel)</h2><pre>
+   1 9
+   1 8
+   1 56
+   1 5
+   1 161
+   1 10
+</pre>
+<p><b>Current channel:</b> 56. If it is crowded above, move the access point to a quieter channel. On 2.4 GHz use 1, 6 or 11, which do not overlap. On 5 GHz any channel with few neighbors works.</p>
+<h2>Remediation tips</h2><ul>
+<li>RSSI worse than -65 dBm or SNR below 25 dB: move closer to the access point, reduce interference, prefer 5 GHz.</li>
+<li>High packet loss or latency to the gateway: the problem is the Wi-Fi hop. Check channel congestion, try the other band, look for interference.</li>
+<li>Clean gateway but loss or latency to DNS or the internet: the problem is past the access point. Check the uplink and any captive portal.</li>
+<li>Slow DNS or TLS in the HTTP timing usually points at the network path or MTU. Compare wired against Wi-Fi.</li>
+</ul>
